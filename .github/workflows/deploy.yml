@@ -25,10 +25,10 @@ jobs:
           sleep 10
           
           # Testear que el servicio FastAPI está funcionando a través del proxy nginx
-          curl --fail http://localhost:8082/docs
+          curl --fail http://localhost:8081/docs
           
           # Verificar que el endpoint de health/info funciona
-          curl --fail http://localhost:8082/
+          curl --fail http://localhost:8081/
           
           # Verificar logs para asegurar que no hay errores
           docker compose logs api
@@ -74,7 +74,7 @@ jobs:
             docker compose ps
             
             # Test simple de conectividad
-            if curl --fail --silent --max-time 5 http://localhost:8082/ > /dev/null; then
+            if curl --fail --silent --max-time 5 http://localhost:8081/ > /dev/null; then
               echo "✅ Aplicación funcionando correctamente en puerto 80"
             else
               echo "❌ Error: La aplicación no responde"
